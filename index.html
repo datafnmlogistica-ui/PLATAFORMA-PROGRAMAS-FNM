@@ -4,22 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PLATAFORMA PROGRAMAS FNM</title>
+    <!-- Ícono de la pestaña del navegador -->
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
     <style>
-        body, html {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body, html {
             height: 100%;
             overflow: hidden;
             background-color: #121212;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
         }
-        
+
+        /* Barra superior */
+        .barra-superior {
+            height: 60px;
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #2d2d2d;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 15px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo-fnm {
+            height: 42px;
+            width: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #d4af37; /* Borde dorado a juego con el sello */
+        }
+
+        .titulo-plataforma {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Contenedor del formulario */
         .contenedor-seguro {
-            position: absolute;
-            top: 0;
-            left: 0;
+            flex: 1;
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            position: relative;
         }
 
         iframe {
@@ -34,6 +70,13 @@
 </head>
 <body>
 
+    <!-- Encabezado con el Logo y Título -->
+    <header class="barra-superior">
+        <img src="logo.jpg" alt="Logo FNM" class="logo-fnm">
+        <span class="titulo-plataforma">PLATAFORMA PROGRAMAS FNM</span>
+    </header>
+
+    <!-- Contenedor con el script de Google -->
     <div class="contenedor-seguro">
         <iframe 
             src="https://script.google.com/macros/s/AKfycbzXzoHJJG6BmcZuMGCQJTHoE3a4tK5_Bq4OorQyx7L4xbEdfQ8zk30t0q9WNx1wr54MsA/exec"
