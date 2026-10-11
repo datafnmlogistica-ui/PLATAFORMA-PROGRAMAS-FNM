@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLATAFORMA PROGRAMAS FNM</title>
-    <!-- Ícono de la pestaña del navegador -->
+    <title>CONSULTA PROGRAMAS FNM</title>
+    <!-- Ícono en la pestaña del navegador -->
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <style>
         * {
@@ -22,7 +22,7 @@
             flex-direction: column;
         }
 
-        /* Barra superior */
+        /* Barra superior con logo */
         .barra-superior {
             height: 60px;
             background-color: #1a1a1a;
@@ -40,7 +40,8 @@
             width: 42px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #d4af37; /* Borde dorado a juego con el sello */
+            border: 2px solid #d4af37;
+            display: block;
         }
 
         .titulo-plataforma {
@@ -73,16 +74,15 @@
     <!-- Encabezado con el Logo y Título -->
     <header class="barra-superior">
         <img src="logo.jpg" alt="Logo FNM" class="logo-fnm">
-        <span class="titulo-plataforma">PLATAFORMA PROGRAMAS FNM</span>
+        <span class="titulo-plataforma">CONSULTA PROGRAMAS FNM</span>
     </header>
 
-    <!-- Contenedor con el script de Google -->
+    <!-- Contenedor con la URL de Apps Script -->
     <div class="contenedor-seguro">
         <iframe 
-            src="https://script.google.com/macros/s/AKfycbzXzoHJJG6BmcZuMGCQJTHoE3a4tK5_Bq4OorQyx7L4xbEdfQ8zk30t0q9WNx1wr54MsA/exec"
+            src="https://script.google.com/macros/s/AKfycbw-tNDYeZf9CXUFzje5th1OSwzby9WKt-U2l7KjDts_PhaUUVsHLxj-8TFm6HuAOACl/exec"
             allow="camera; microphone; geolocation">
         </iframe>
     </div>
 
 </body>
-</html>
