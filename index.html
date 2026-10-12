@@ -22,7 +22,7 @@
             flex-direction: column;
         }
 
-        /* Barra superior con logo */
+        /* Barra superior con logo y botón */
         .barra-superior {
             height: 60px;
             background-color: #1a1a1a;
@@ -52,6 +52,26 @@
             text-transform: uppercase;
         }
 
+        /* Botón de apoyo en la barra para volver a ver el flyer */
+        .btn-ver-flyer {
+            margin-left: auto;
+            background: #242424;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-ver-flyer:hover {
+            background-color: #d4af37;
+            color: #121212;
+        }
+
         /* Contenedor del formulario */
         .contenedor-seguro {
             flex: 1;
@@ -68,7 +88,7 @@
             border: none;
         }
 
-        /* Modal / Popup del Flyer */
+        /* Ventana emergente (Modal) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -130,10 +150,11 @@
 </head>
 <body>
 
-    <!-- Encabezado con el Logo y Título -->
+    <!-- Encabezado con Logo, Título y Botón para ver Flyer -->
     <header class="barra-superior">
         <img src="logo.jpg" alt="Logo FNM" class="logo-fnm">
         <span class="titulo-plataforma">CONSULTA PROGRAMAS FNM</span>
+        <button class="btn-ver-flyer" onclick="abrirModal()">Ver Flyer</button>
     </header>
 
     <!-- Contenedor con la URL de Apps Script -->
@@ -144,19 +165,33 @@
         </iframe>
     </div>
 
-  <!-- Ventana emergente con el flyer -->
+    <!-- Modal con Flyer -->
     <div class="modal-overlay" id="modalFlyer">
         <div class="modal-contenido">
-            <!-- Se añade ?v=2 para obligar a GitHub y al navegador a descargar la versión nueva -->
-            <img src="flyer.jpg?v=2" alt="Flyer Asuntos Jurídicos I" class="imagen-flyer">
+            <img id="imgFlyer" alt="Flyer Asuntos Jurídicos I" class="imagen-flyer">
             <button class="btn-cerrar" onclick="cerrarModal()">Continuar a la consulta</button>
         </div>
     </div>
 
     <script>
+        // Carga flyer.jpg evitando la caché del navegador
+        document.getElementById('imgFlyer').src = 'flyer.jpg?t=' + new Date().getTime();
+
         function cerrarModal() {
             document.getElementById('modalFlyer').style.display = 'none';
         }
+
+        function abrirModal() {
+            document.getElementById('modalFlyer').style.display = 'flex';
+        }
+
+        // Si tu Apps Script emite un mensaje al pulsar "Nueva Consulta":
+        // window.parent.postMessage('abrirFlyer', '*');
+        window.addEventListener('message', function(evento) {
+            if (evento.data === 'abrirFlyer') {
+                abrirModal();
+            }
+        });
     </script>
 
 </body>
