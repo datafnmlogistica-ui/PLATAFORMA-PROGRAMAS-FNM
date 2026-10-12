@@ -22,17 +22,18 @@
             flex-direction: column;
         }
 
-        /* Barra superior con logo y botón */
+        /* Barra superior con logo, textos y botón */
         .barra-superior {
-            height: 60px;
+            min-height: 60px;
             background-color: #1a1a1a;
             border-bottom: 1px solid #2d2d2d;
             display: flex;
             align-items: center;
-            padding: 0 20px;
+            padding: 8px 20px;
             gap: 15px;
             flex-shrink: 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            flex-wrap: wrap;
         }
 
         .logo-fnm {
@@ -44,21 +45,36 @@
             display: block;
         }
 
+        .info-titulos {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
         .titulo-plataforma {
             color: #ffffff;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
 
-        /* Botón de apoyo en la barra para volver a ver el flyer */
+        /* Distintivo de fecha del programa */
+        .fecha-programa {
+            color: #f59e0b;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        /* Botón para abrir el flyer */
         .btn-ver-flyer {
             margin-left: auto;
             background: #242424;
             color: #d4af37;
             border: 1px solid #d4af37;
-            padding: 8px 14px;
+            padding: 7px 14px;
             border-radius: 6px;
             font-size: 13px;
             font-weight: 600;
@@ -150,14 +166,20 @@
 </head>
 <body>
 
-    <!-- Encabezado con Logo, Título y Botón para ver Flyer -->
+    <!-- Encabezado con Logo, Título, Fecha y Botón -->
     <header class="barra-superior">
         <img src="logo.jpg" alt="Logo FNM" class="logo-fnm">
-        <span class="titulo-plataforma">CONSULTA PROGRAMAS FNM</span>
+        
+        <div class="info-titulos">
+            <span class="titulo-plataforma">CONSULTA PROGRAMAS FNM</span>
+            <!-- Aquí puedes editar las fechas del programa -->
+            <span class="fecha-programa">📅 JULIO 25 - AGOSTO 9 2026</span>
+        </div>
+
         <button class="btn-ver-flyer" onclick="abrirModal()">Ver Flyer</button>
     </header>
 
-    <!-- Contenedor con la URL de Apps Script -->
+    <!-- Contenedor con el script de Google -->
     <div class="contenedor-seguro">
         <iframe 
             src="https://script.google.com/macros/s/AKfycbw-tNDYeZf9CXUFzje5th1OSwzby9WKt-U2l7KjDts_PhaUUVsHLxj-8TFm6HuAOACl/exec"
@@ -185,8 +207,7 @@
             document.getElementById('modalFlyer').style.display = 'flex';
         }
 
-        // Si tu Apps Script emite un mensaje al pulsar "Nueva Consulta":
-        // window.parent.postMessage('abrirFlyer', '*');
+        // Escucha si Apps Script envía orden de apertura
         window.addEventListener('message', function(evento) {
             if (evento.data === 'abrirFlyer') {
                 abrirModal();
