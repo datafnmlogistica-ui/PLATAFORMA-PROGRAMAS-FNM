@@ -109,53 +109,57 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.88);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            padding: 15px;
-            backdrop-filter: blur(4px);
+            padding: 12px;
+            backdrop-filter: blur(5px);
         }
 
         .modal-contenido {
             position: relative;
-            background-color: #1e1e1e;
+            background-color: #1a1a1a;
             border-radius: 12px;
             border: 1px solid #333333;
-            max-width: 420px;
+            max-width: 380px;
             width: 100%;
-            max-height: 90vh;
+            max-height: 88vh; /* No excede la altura de la pantalla */
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            padding: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
 
         .imagen-flyer {
-            width: 100%;
-            aspect-ratio: 5 / 7;
+            width: auto;
+            max-width: 100%;
+            max-height: calc(88vh - 75px); /* Reserva espacio para el botón */
             object-fit: contain;
             border-radius: 8px;
             background-color: #000000;
+            display: block;
         }
 
         .btn-cerrar {
-            margin-top: 12px;
+            margin-top: 10px;
             width: 100%;
-            padding: 12px;
+            padding: 11px;
             background-color: #d4af37;
             color: #121212;
             border: none;
             border-radius: 8px;
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: 800;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            flex-shrink: 0; /* Impide que el botón se comprima o quede cortado */
             transition: background 0.2s;
         }
 
@@ -172,7 +176,6 @@
         
         <div class="info-titulos">
             <span class="titulo-plataforma">CONSULTA PROGRAMAS FNM</span>
-            <!-- Aquí puedes editar las fechas del programa -->
             <span class="fecha-programa">📅 JULIO 25 - AGOSTO 9 2026</span>
         </div>
 
@@ -187,7 +190,7 @@
         </iframe>
     </div>
 
-    <!-- Modal con Flyer -->
+    <!-- Modal con Flyer y botón siempre visible -->
     <div class="modal-overlay" id="modalFlyer">
         <div class="modal-contenido">
             <img id="imgFlyer" alt="Flyer Asuntos Jurídicos I" class="imagen-flyer">
